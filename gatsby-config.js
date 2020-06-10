@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -11,6 +13,26 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-prismic-graphql`,
+      options: {
+        repositoryName: 'jw-site', // repo name
+        accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN, // repo access token from dotenv
+        path: '/preview', // (optional preview path. Default: /preview)
+        previews: true, // (optional, activated Previews. Default: false),
+        pages: [
+          {
+            // (Builds pages dynamically)
+            type: 'project', // TypeName from prismic
+            match: '/project/:uid', // Pages will be generated under this pattern
+            path: '/project', // Placeholder page for unpublished documents
+            component: require.resolve(
+              './src/components/project.js'
+            ),
+          },
+        ],
       },
     },
     `gatsby-transformer-sharp`,

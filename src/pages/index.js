@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { graphql } from 'gatsby';
 
 import Layout from "../components/layout"
 import Image from "../components/image"
@@ -18,5 +19,19 @@ const IndexPage = () => (
     <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
   </Layout>
 )
+
+export const query = graphql`
+  {
+    prismic {
+      allHomepages {
+        edges {
+          node {
+            header
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default IndexPage
