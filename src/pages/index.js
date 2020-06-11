@@ -33,25 +33,47 @@ const HeroDescription = styled(P)`
   margin: auto;
 `
 
-
-const Projects = styled.div`
+const ProjectsWrapper = styled.div`
   margin-top: 200px;
   text-align: center;
 `
 
-const ProjectWrapper = styled.div`
+const ProjectText = styled.div`
+  margin: auto;
+  max-width: 30%;
+  text-align: left;
+  margin-bottom: 70px;
+`
+
+const ProjectTitle = styled(P)`
+  font-size: 24px;
+  color: ${YELLOW};
+`
+
+const ProjectDescription = styled(P)`
 
 `
 
+const ProjectSection = props => {
+  const { title, image, description } = props;
+  return (
+    <ProjectText>
+      <ProjectTitle>{title}</ProjectTitle>
+      <P>{description}</P>
+    </ProjectText>
+  );
+};
+
 const IndexPage = ({ data }) => {
   const page = data.prismic.allHomepages.edges[0].node;
-  // const Projects = page.projects.map(project => {
-  //   <ProjectWrapper>
-  //     <P>{project.title}</P>
-  //   </ProjectWrapper>
-  // });
 
-  
+  const Projects = page.projects.map((project) => (
+    <ProjectSection
+      title = {project.title}
+      description={project.description}
+    />
+    )
+  );
 
   return (
   <Layout>
@@ -62,9 +84,10 @@ const IndexPage = ({ data }) => {
       <HeroDescription>{page.hero_description}</HeroDescription>
     </Hero>
 
-    <Projects>
+    <ProjectsWrapper>
       <H2>{page.projects_header}</H2>
-    </Projects>
+      {Projects}
+    </ProjectsWrapper>
 
 
   </Layout>

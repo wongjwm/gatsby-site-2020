@@ -18,11 +18,11 @@ export const H1 = styled.h1`
   margin-bottom: 25px;
 `
 
-export const H2 = styled.h1`
+export const H2 = styled.h2`
   font-family: ${Charter};
-  color: ${WHITE};
+  color: ${BRIGHT_TEAL};
   font-weight: 800;
-  font-size: 52px;
+  font-size: 38px;
   margin-bottom: 25px;
 `
 
@@ -33,3 +33,20 @@ export const P = styled.p`
   font-size: 22px;
   margin-bottom: 25px;
 `
+
+export const RichTextLinkStyle = styled.a`
+  font-family: ${Apercu};
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: ${BRIGHT_TEAL};
+`;
+
+export const RichTextLink = props => {
+  return <RichTextLinkStyle {...props} target="_blank" rel="noreferrer" />;
+};
+
+export const Strong = styled.span`
+  font-weight: 700;
+`;
+

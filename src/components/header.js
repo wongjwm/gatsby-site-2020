@@ -5,7 +5,10 @@ import styled from 'styled-components';
 import {
   DARK_GREEN,
   H2,
-  P
+  P,
+  YELLOW,
+  Apercu,
+  BRIGHT_TEAL
 } from '../styles';
 
 const HeaderWrapper = styled.header`
@@ -31,15 +34,14 @@ const Logo = styled.img`
 
 const NavLink = styled(Link)`
   font-size: 20px;
-  color: white;
+  font-family: ${Apercu};
+  color: ${YELLOW};
   text-decoration: none;
   padding: 10px;
+  &:hover {
+    color: ${BRIGHT_TEAL};
+  }
 `
-
-const ExternalNavLink = styled.a`
-
-`
-
 
 const Header = ({ siteTitle }) => (
   <HeaderWrapper>
