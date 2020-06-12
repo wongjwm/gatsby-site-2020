@@ -8,10 +8,7 @@ import styled from 'styled-components';
 import { RichText } from 'prismic-reactjs-custom';
 import Blob from '../images/blob-outline.svg';
 import {
-  DARK_GREEN,
   YELLOW,
-  BRIGHT_TEAL,
-  H1,
   H2,
   H3,
   P,
@@ -29,12 +26,10 @@ const AboutWrapper = styled.div`
 const TextWrapper = styled.div`
   margin: 100px 0px 200px 100px;
 `
-
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
 `
-
 const ProfileImage = styled.img`
   width: 100%;
   height: auto;
@@ -45,7 +40,6 @@ const BlobDecoration = styled.img`
   height: 500px;
   left: 0px;
 `
-
 const StyledContactLink = styled.a`
   font-size: 24px;
   color: ${YELLOW};
@@ -92,10 +86,14 @@ const AboutPage = ({ data }) => {
             hyperlink={RichTextLink}
             strong={Strong}
         />
-        <H3>some of my current hobbies:</H3>
-
-        <P>perfecting my cold brew, decorating my animal crossing island, and hand embroidery</P>
-        <H3>contact me</H3>
+        <H3>{page.hobbies_title}</H3>
+        <RichText
+            richText={page.hobbies}
+            listItem={P}
+            hyperlink={RichTextLink}
+            strong={Strong}
+        />
+        <H3>{page.contact_title}</H3>
         {links}
 
 
@@ -115,6 +113,9 @@ export const query = graphql`
             profile_picture
             about_title
             about_description
+            hobbies_title
+            hobbies
+            contact_title
           }
         }
       }

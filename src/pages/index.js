@@ -113,7 +113,7 @@ const ProjectSection = props => {
   const { title, image, description, uid } = props;
   return (
     <ProjectText>
-      <ProjectTitle to='/projects/'>{title}</ProjectTitle>
+      <ProjectTitle to={`/project/${uid}`}>{title}</ProjectTitle>
       <DescriptionWrapper>
         <ProjectDescription>{description}</ProjectDescription>
         <HiddenProjectImg src={image.url} alt=""/>
@@ -124,12 +124,14 @@ const ProjectSection = props => {
 
 const IndexPage = ({ data }) => {
   const page = data.prismic.allHomepages.edges[0].node;
-  const Projects = page.projects.map((project) => (
+  const projects = data.prismic.allProjects.edges;
+
+  const Projects = projects.map((project) => (
     <ProjectSection
-      title = {project.title}
-      description={project.description}
-      image={project.image}
-      // uid={project.uid}
+      title = {project.node.project_name[0].text}
+      description={project.node.preview_description}
+      image={project.node.preview_image}
+      uid={project.node._meta.uid}
     />
     )
   );
@@ -163,11 +165,18 @@ export const query = graphql`
             hero_subheader
             hero_description
             projects_header
-            projects {
-              title
-              description
-              image
+          }
+        }
+      }
+      allProjects {
+        edges {
+          node {
+            _meta {
+              uid
             }
+            project_name
+            preview_description
+            preview_image
           }
         }
       }
