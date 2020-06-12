@@ -1,41 +1,76 @@
-import React from "react"
+import React, { Component } from "react"
 import { Link } from "gatsby"
 import { graphql } from 'gatsby';
-
 import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import {
   DARK_GREEN,
   YELLOW,
   BRIGHT_TEAL,
+  LIGHT_GRAY,
   H1,
   H2,
-  P
+  P,
+  Apercu
 } from '../styles';
+import Line from "../images/line.svg"
 
 const Hero = styled.div`
   margin: auto;
   background-color: ${DARK_GREEN};
   width: 60%;
   text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 `
 
 const Subheader = styled(P)`
   color: ${YELLOW};
   font-weight: 800;
-  font-size: 22px;
+  font-size: 32px;
 ` 
 
 const HeroDescription = styled(P)`
-  max-width: 500px;
+  max-width: 600px;
   margin: auto;
+  font-size: 30px;
+  line-height: 1.3;
+`
+
+const LineAnimation = styled.div`
+`
+
+const grow = keyframes`
+  100% {
+    height: 200px;
+  }
+`
+
+const LineImg = styled.img`
+  height: 0px;
+  width: 100px;
+  margin: auto;
+  display: block;
+  position: relative;
+  animation: ${grow} 1s linear;
+  animation-fill-mode: forwards;
+`
+
+const fadein = keyframes`
+  from { opacity: 0; }
+  to   { opacity: 1; }
 `
 
 const ProjectsWrapper = styled.div`
-  margin-top: 200px;
+  margin: 100px 0px 200px 0px;
   text-align: center;
+  -webkit-animation: ${fadein} 3s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: ${fadein} 3s; /* Firefox < 16 */
+   -ms-animation: ${fadein} 3s; /* Internet Explorer */
+    -o-animation: ${fadein} 3s; /* Opera < 12.1 */
+       animation: ${fadein} 3s;
 `
 
 const ProjectText = styled.div`
@@ -45,28 +80,34 @@ const ProjectText = styled.div`
   margin-bottom: 70px;
 `
 
-const ProjectTitle = styled(P)`
+const ProjectTitle = styled(Link)`
+  font-family: ${Apercu};
   font-size: 24px;
+  text-decoration: none;
+  margin-bottom: 50px;
   color: ${YELLOW};
+  &:first-child {
+    margin-top: 50px;
+  }
 `
 
 const ProjectDescription = styled(P)`
-
+  margin-top: 20px;
+  color: ${LIGHT_GRAY};
 `
 
 const ProjectSection = props => {
   const { title, image, description } = props;
   return (
     <ProjectText>
-      <ProjectTitle>{title}</ProjectTitle>
-      <P>{description}</P>
+      <ProjectTitle href="/">{title}</ProjectTitle>
+      <ProjectDescription>{description}</ProjectDescription>
     </ProjectText>
   );
 };
 
 const IndexPage = ({ data }) => {
   const page = data.prismic.allHomepages.edges[0].node;
-
   const Projects = page.projects.map((project) => (
     <ProjectSection
       title = {project.title}
@@ -83,13 +124,13 @@ const IndexPage = ({ data }) => {
       <Subheader>{page.hero_subheader}</Subheader>
       <HeroDescription>{page.hero_description}</HeroDescription>
     </Hero>
-
+    <LineAnimation>
+      <LineImg src={Line}/>
+    </LineAnimation>
     <ProjectsWrapper>
       <H2>{page.projects_header}</H2>
       {Projects}
     </ProjectsWrapper>
-
-
   </Layout>
   );
 };

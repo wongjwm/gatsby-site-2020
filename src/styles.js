@@ -5,6 +5,7 @@ import React from 'react';
 export const DARK_GREEN = '#063432';
 export const YELLOW = '#E7CD56';
 export const BRIGHT_TEAL = '#9CFFED';
+export const LIGHT_GRAY = 'FFFEFD';
 export const WHITE = '#FFFFFF';
 
 export const Charter = "'Charter', serif";
@@ -30,7 +31,7 @@ export const P = styled.p`
   font-family: ${Apercu};
   color: ${WHITE};
   font-weight: normal;
-  font-size: 22px;
+  font-size: 18px;
   margin-bottom: 25px;
 `
 

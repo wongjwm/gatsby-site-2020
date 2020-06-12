@@ -18,9 +18,14 @@ import {
 } from '../styles';
 
 const AboutWrapper = styled.div`
-  width: 80%;
+  width: 70%;
   margin: auto;
   display: flex;
+`
+
+const TextWrapper = styled.div`
+padding-left: 50px;
+padding-top: 100px;
 `
 
 const ProfileImage = styled.img`
@@ -29,12 +34,23 @@ const ProfileImage = styled.img`
 `
 
 const Title = styled(H2)`
-  padding-left: 50px;
-  padding-top: 100px;
+
+`
+
+const ContactLink = styled(Link)`
+
 `
 
 const AboutPage = ({ data }) => {
   const page = data.prismic.allAbout_pages.edges[0].node;
+  const contactData = data.prismic.allContacts.edges[0].node;
+
+  const links = contactData.links.map((link) => (
+    <ContactLink
+      linkName={link.link_name}
+      link={link.link.url}
+    />
+  ));
   
   return (
   <Layout>
@@ -42,16 +58,21 @@ const AboutPage = ({ data }) => {
     <AboutWrapper>
       <ProfileImage alt="temp" src={page.profile_picture.url}/>
 
-      <div>
+      <TextWrapper>
         <Title>{page.about_title[0].text}</Title>
-      <P>{page.about_description.text}</P>
-      {/* <RichText
-          richText={page.about_description.text}
-          paragraph={P}
-          hyperlink={RichTextLink}
-          strong={Strong}
-        /> */}
-        </div>
+        <RichText
+            richText={page.about_description}
+            paragraph={P}
+            hyperlink={RichTextLink}
+            strong={Strong}
+        />
+        <H2>some of my current hobbies:</H2>
+        <P>perfecting my cold brew, decorating my animal crossing island, and hand embroidery</P>
+        <H2>contact me</H2>
+        
+
+
+        </TextWrapper>
     </AboutWrapper>
 
   </Layout>
@@ -67,6 +88,25 @@ export const query = graphql`
             profile_picture
             about_title
             about_description
+          }
+        }
+      }
+      allContacts {
+        edges {
+          node {
+            links {
+              link {
+                ... on PRISMIC__ExternalLink {
+                  _linkType
+                  url
+                }
+                ... on PRISMIC__FileLink {
+                  _linkType
+                  url
+                }
+              }
+              link_name
+            }
           }
         }
       }

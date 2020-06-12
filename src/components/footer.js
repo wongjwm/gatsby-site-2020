@@ -50,7 +50,6 @@ const FooterLink = props => {
 const FooterWithoutData = props => {
   const { data } = props;
   const contactData = data.prismic.allContacts.edges[0].node;
-  console.log(contactData);
 
   const links = contactData.links.map((link) => (
     <FooterLink
