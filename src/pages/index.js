@@ -110,10 +110,10 @@ const DescriptionWrapper = styled.div`
 `
 
 const ProjectSection = props => {
-  const { title, image, description } = props;
+  const { title, image, description, uid } = props;
   return (
     <ProjectText>
-      <ProjectTitle href="/">{title}</ProjectTitle>
+      <ProjectTitle to='/projects/'>{title}</ProjectTitle>
       <DescriptionWrapper>
         <ProjectDescription>{description}</ProjectDescription>
         <HiddenProjectImg src={image.url} alt=""/>
@@ -129,6 +129,7 @@ const IndexPage = ({ data }) => {
       title = {project.title}
       description={project.description}
       image={project.image}
+      // uid={project.uid}
     />
     )
   );
@@ -144,7 +145,7 @@ const IndexPage = ({ data }) => {
     <LineAnimation>
       <LineImg src={Line}/>
     </LineAnimation>
-    <ProjectsWrapper>
+    <ProjectsWrapper id='#work'>
       <H2>{page.projects_header}</H2>
       {Projects}
     </ProjectsWrapper>

@@ -22,7 +22,7 @@ const FooterLinks = styled.div`
 
 `
 
-const StyledFooterLink = styled(Link)`
+const StyledFooterLink = styled.a`
   font-size: 14px;
   color: ${YELLOW};
   font-family: ${Apercu};

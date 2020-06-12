@@ -6,15 +6,18 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 import styled from 'styled-components';
 import { RichText } from 'prismic-reactjs-custom';
+import Blob from '../images/blob-outline.svg';
 import {
   DARK_GREEN,
   YELLOW,
   BRIGHT_TEAL,
   H1,
   H2,
+  H3,
   P,
   RichTextLink,
-  Strong
+  Strong,
+  Apercu
 } from '../styles';
 
 const AboutWrapper = styled.div`
@@ -24,22 +27,42 @@ const AboutWrapper = styled.div`
 `
 
 const TextWrapper = styled.div`
-padding-left: 50px;
-padding-top: 100px;
+  margin: 100px 0px 200px 100px;
+`
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
 `
 
 const ProfileImage = styled.img`
-  width: 40%;
-  height: 100%;
+  width: 100%;
+  height: auto;
+`
+const BlobDecoration = styled.img`
+  position: absolute;
+  width: 900px;
+  height: 500px;
+  left: 0px;
 `
 
-const Title = styled(H2)`
+const StyledContactLink = styled.a`
+  font-size: 24px;
+  color: ${YELLOW};
+  font-family: ${Apercu};
+  text-decoration: none;
+  padding-right: 20px;
+  &:hover {
 
+  }
 `
 
-const ContactLink = styled(Link)`
-
-`
+const ContactLink = props => {
+  const { linkName, link } = props;
+  return (
+    <StyledContactLink href={link}>{linkName}</StyledContactLink>
+  )
+}
 
 const AboutPage = ({ data }) => {
   const page = data.prismic.allAbout_pages.edges[0].node;
@@ -56,23 +79,27 @@ const AboutPage = ({ data }) => {
   <Layout>
     <SEO title="About" />
     <AboutWrapper>
-      <ProfileImage alt="temp" src={page.profile_picture.url}/>
+      <ImageWrapper>
+        <BlobDecoration alt="" src={Blob}/>
+        <ProfileImage alt="temp" src={page.profile_picture.url}/>
+      </ImageWrapper>
 
       <TextWrapper>
-        <Title>{page.about_title[0].text}</Title>
+        <H2>{page.about_title[0].text}</H2>
         <RichText
             richText={page.about_description}
             paragraph={P}
             hyperlink={RichTextLink}
             strong={Strong}
         />
-        <H2>some of my current hobbies:</H2>
+        <H3>some of my current hobbies:</H3>
+
         <P>perfecting my cold brew, decorating my animal crossing island, and hand embroidery</P>
-        <H2>contact me</H2>
-        
+        <H3>contact me</H3>
+        {links}
 
 
-        </TextWrapper>
+      </TextWrapper>
     </AboutWrapper>
 
   </Layout>

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import React from 'react';
+import { device } from './device';
 
 export const DARK_GREEN = '#063432';
 export const YELLOW = '#E7CD56';
@@ -17,6 +18,12 @@ export const H1 = styled.h1`
   font-weight: 800;
   font-size: 60px;
   margin-bottom: 25px;
+  @media only screen and ${device.tablet} {
+    font-size: 56px;
+  }
+  @media only screen and ${device.mobile} {
+    font-size: 32px;
+  }
 `
 
 export const H2 = styled.h2`
@@ -24,6 +31,20 @@ export const H2 = styled.h2`
   color: ${BRIGHT_TEAL};
   font-weight: 800;
   font-size: 38px;
+  margin-bottom: 25px;
+  @media only screen and ${device.tablet} {
+    font-size: 38px;
+  }
+  @media only screen and ${device.mobile} {
+    font-size: 38px;
+  }
+`
+
+export const H3 = styled.h3`
+  font-family: ${Charter};
+  color: ${BRIGHT_TEAL};
+  font-weight: 800;
+  font-size: 28px;
   margin-bottom: 25px;
 `
 
@@ -33,6 +54,12 @@ export const P = styled.p`
   font-weight: normal;
   font-size: 18px;
   margin-bottom: 25px;
+  @media only screen and ${device.tablet} {
+    font-size: 16px;
+  }
+  @media only screen and ${device.mobile} {
+    font-size: 14px;
+  }
 `
 
 export const RichTextLinkStyle = styled.a`
