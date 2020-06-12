@@ -73,11 +73,20 @@ const ProjectsWrapper = styled.div`
        animation: ${fadein} 3s;
 `
 
+const HiddenProjectImg = styled.img`
+  display: none;
+  position: absolute;
+`
+
 const ProjectText = styled.div`
   margin: auto;
   max-width: 30%;
   text-align: left;
   margin-bottom: 70px;
+  &:hover ${HiddenProjectImg} {
+    display: inline;
+    left: 20%;
+  }
 `
 
 const ProjectTitle = styled(Link)`
@@ -96,12 +105,19 @@ const ProjectDescription = styled(P)`
   color: ${LIGHT_GRAY};
 `
 
+const DescriptionWrapper = styled.div`
+  display: flex;
+`
+
 const ProjectSection = props => {
   const { title, image, description } = props;
   return (
     <ProjectText>
       <ProjectTitle href="/">{title}</ProjectTitle>
-      <ProjectDescription>{description}</ProjectDescription>
+      <DescriptionWrapper>
+        <ProjectDescription>{description}</ProjectDescription>
+        <HiddenProjectImg src={image.url} alt=""/>
+      </DescriptionWrapper>
     </ProjectText>
   );
 };
@@ -112,6 +128,7 @@ const IndexPage = ({ data }) => {
     <ProjectSection
       title = {project.title}
       description={project.description}
+      image={project.image}
     />
     )
   );
@@ -148,6 +165,7 @@ export const query = graphql`
             projects {
               title
               description
+              image
             }
           }
         }
