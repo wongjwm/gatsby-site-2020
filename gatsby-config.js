@@ -22,17 +22,17 @@ module.exports = {
         accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN, // repo access token from dotenv
         path: '/preview', // (optional preview path. Default: /preview)
         previews: true, // (optional, activated Previews. Default: false),
-        pages: [
-          {
-            // (Builds pages dynamically)
-            type: 'Project', // TypeName from prismic
-            match: '/project/:uid', // Pages will be generated under this pattern
-            path: '/project', // Placeholder page for unpublished documents
-            component: require.resolve(
-              './src/components/Project.js'
-            ),
-          },
-        ],
+        // pages: [
+        //   {
+        //     // (Builds pages dynamically)
+        //     type: 'Project', // TypeName from prismic
+        //     match: '/project/:uid', // Pages will be generated under this pattern
+        //     path: '/project', // Placeholder page for unpublished documents
+        //     component: require.resolve(
+        //       './src/components/Project.js'
+        //     ),
+        //   },
+        // ],
       },
     },
     `gatsby-transformer-sharp`,
