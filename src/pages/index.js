@@ -17,10 +17,11 @@ import {
 } from '../styles';
 import Line from "../images/line.svg"
 
+
 const Hero = styled.div`
   margin: auto;
   background-color: ${DARK_GREEN};
-  width: 60%;
+  width: 70%;
   text-align: center;
   margin-top: 50px;
   margin-bottom: 50px;
