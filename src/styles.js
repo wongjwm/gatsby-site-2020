@@ -6,7 +6,7 @@ import { device } from './device';
 export const DARK_GREEN = '#063432';
 export const YELLOW = '#E7CD56';
 export const BRIGHT_TEAL = '#9CFFED';
-export const LIGHT_GRAY = 'FFFEFD';
+export const LIGHT_GRAY = '#CACACA';
 export const WHITE = '#FFFFFF';
 
 export const Charter = "'Charter', serif";
@@ -60,6 +60,11 @@ export const P = styled.p`
   @media only screen and ${device.mobile} {
     font-size: 14px;
   }
+`
+
+export const SmallTag = styled(P)`
+  color: ${LIGHT_GRAY};
+  font-size: 14px;
 `
 
 export const RichTextLinkStyle = styled.a`
