@@ -75,10 +75,6 @@ const ProjectWithoutData = ({ data }) => {
   const allProjects = data.prismic.AllProjects.edges;
   if (!allProjects) return null;
 
-  console.log(projectData);
-  console.log(allProjects);
-  console.log(projectContent);
-
   const Content = projectContent && projectContent.map(contentBlock => <ProjectContent {...contentBlock} />)
 
   const Types = projectData.types.map((type) => {
