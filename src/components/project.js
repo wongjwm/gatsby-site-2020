@@ -67,9 +67,13 @@ const ContentSection = styled.div`
 const ProjectWithoutData = ({ data }) => {
 
   const projectData = data.prismic.Project.edges[0] && data.prismic.Project.edges[0].node;
+  if (!projectData) return null;
+
   const projectContent = projectData && projectData.body;
+  if (!projectContent) return null;
 
   const allProjects = data.prismic.AllProjects.edges;
+  if (!allProjects) return null;
 
   console.log(projectData);
   console.log(allProjects);
