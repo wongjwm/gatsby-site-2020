@@ -29,7 +29,7 @@ module.exports = {
             match: '/project/:uid', // Pages will be generated under this pattern
             path: '/project', // Placeholder page for unpublished documents
             component: require.resolve(
-              './src/components/Project.js'
+              './src/components/project.js'
             ),
           },
         ],
