@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 import {
   DARK_GREEN,
   H2,
@@ -43,35 +44,70 @@ const NavLink = styled(Link)`
   }
 `
 
-const Header = ({ siteTitle }) => (
-  <HeaderWrapper>
-    <Nav>
-      <H2>
-        <NavLink to="/"> {siteTitle} </NavLink>
-      </H2>
-      <NavLinks>
+const ResumeLink = styled.a`
+  font-size: 20px;
+  font-family: ${Apercu};
+  color: ${YELLOW};
+  text-decoration: none;
+  padding: 10px;
+  &:hover {
+    color: ${BRIGHT_TEAL};
+  }
+`
+
+const HeaderWithoutData = props => {
+  const { data } = props;
+  const contactData = data.prismic.allContacts.edges[0].node;
+
+  return (
+    <HeaderWrapper>
+      <Nav>
         <H2>
-          <NavLink to="/work"> work </NavLink>
+          <NavLink to="/"> JW </NavLink>
         </H2>
-        <H2>
-          <NavLink to="/about"> about </NavLink>
-        </H2>
-        <H2>
-          <NavLink to="/resume"> resume </NavLink>
-        </H2>
-      </NavLinks>
+        <NavLinks>
+          <H2>
+            <NavLink to="/about"> about </NavLink>
+          </H2>
+          <H2>
+            <ResumeLink href={contactData.resume.url}> resume </ResumeLink>
+          </H2>
+        </NavLinks>
 
 
-    </Nav>
-  </HeaderWrapper>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+      </Nav>
+    </HeaderWrapper>
+  )
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
+
+export const data = graphql`
+  {
+    prismic {
+      allContacts {
+        edges {
+          node {
+            resume {
+              ... on PRISMIC__FileLink {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+
+const Header = props => {
+  return (
+    <StaticQuery
+      query={data}
+      render={data => <HeaderWithoutData data={data} {...props} />}
+    />
+  );
+};
+
 
 export default Header
