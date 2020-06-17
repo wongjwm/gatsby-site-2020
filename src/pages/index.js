@@ -5,9 +5,11 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 import styled, { keyframes } from 'styled-components';
+import { device } from '../device';
 import {
   DARK_GREEN,
   YELLOW,
+  WHITE,
   BRIGHT_TEAL,
   LIGHT_GRAY,
   H1,
@@ -31,13 +33,20 @@ const Subheader = styled(P)`
   color: ${YELLOW};
   font-weight: 800;
   font-size: 32px;
-` 
+  @media only screen and ${device.tablet} {
+    font-size: 24px;
+  }
+  @media only screen and ${device.tablet} {
+    font-size: 20px;
+  }
+`
 
 const HeroDescription = styled(P)`
   max-width: 600px;
   margin: auto;
   font-size: 30px;
   line-height: 1.3;
+  color: ${LIGHT_GRAY};
 `
 
 const LineAnimation = styled.div`
@@ -74,6 +83,11 @@ const ProjectsWrapper = styled.div`
        animation: ${fadein} 3s;
 `
 
+const ProjectsHeader = styled(H2)`
+  margin-bottom: 100px;
+  font-size: 45px;
+`
+
 const HiddenProjectImg = styled.img`
   display: none;
   position: absolute;
@@ -81,21 +95,36 @@ const HiddenProjectImg = styled.img`
 
 const ProjectText = styled.div`
   margin: auto;
-  max-width: 30%;
+  max-width: 425px;
   text-align: left;
-  margin-bottom: 70px;
+  margin-bottom: 60px;
   &:hover ${HiddenProjectImg} {
     display: inline;
-    left: 20%;
+    left: 10%;
+    height: 200px;
+    width: 200px;
+  }
+  @media only screen and ${device.tablet} {
+    max-width: 50%;
+    &:hover ${HiddenProjectImg} {
+      display: none;
+    }
+  }
+  @media only screen and ${device.mobile} {
+    max-width: 80%;
   }
 `
 
 const ProjectTitle = styled(Link)`
   font-family: ${Apercu};
+  color: ${YELLOW};
   font-size: 24px;
+  font-weight: 800;
   text-decoration: none;
   margin-bottom: 50px;
-  color: ${YELLOW};
+  &:hover {
+    color: ${BRIGHT_TEAL};
+  }
   &:first-child {
     margin-top: 50px;
   }
@@ -149,7 +178,7 @@ const IndexPage = ({ data }) => {
       <LineImg src={Line}/>
     </LineAnimation>
     <ProjectsWrapper id='#work'>
-      <H2>{page.projects_header}</H2>
+      <ProjectsHeader>{page.projects_header}</ProjectsHeader>
       {Projects}
     </ProjectsWrapper>
   </Layout>

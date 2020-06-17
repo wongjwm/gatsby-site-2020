@@ -1,5 +1,4 @@
 import { StaticQuery, graphql, Link } from 'gatsby';
-import PropTypes from "prop-types"
 import React from "react"
 import Layout from "./layout"
 import styled, { keyframes } from 'styled-components';
@@ -13,6 +12,7 @@ import {
   SmallTag,
   WHITE,
   Apercu,
+  LIGHT_GRAY,
 } from "../styles"
 import { RichText } from 'prismic-reactjs-custom';
 import ProjectContent from './ProjectContent';
@@ -23,12 +23,19 @@ const PageWrapper = styled.div`
 `
 
 const BackLink = styled(Link)`
-  color: ${WHITE};
+  color: ${LIGHT_GRAY};
   font-family: ${Apercu};
+  text-decoration: none;
+  &:hover {
+    color: ${BRIGHT_TEAL};
+  }
 `
 const NextLink = styled(Link)`
   color: ${WHITE};
   font-family: ${Apercu};
+`
+const ProjectTitle = styled(H2)`
+  margin-top: 20px;
 `
 
 const HeroImage = styled.img`
@@ -42,11 +49,11 @@ const IntroSection = styled.div`
   display: flex;
   @media only screen and ${device.tablet} {
     flex-direction: column;
-
   }
 `
 const ProjectDescription = styled.div`
   flex: 1;
+  margin-right: 5%;
 `
 
 const ProjectDetails = styled.div`
@@ -93,9 +100,10 @@ const ProjectWithoutData = ({ data }) => {
     <Layout>
       <PageWrapper>
         <BackLink to='/'>back to projects</BackLink>
-        <H2>{projectData.project_name[0].text}</H2>
+        <ProjectTitle>{projectData.project_name[0].text}</ProjectTitle>
+        <P>{projectData.preview_description}</P>
         <HeroImage src={projectData.hero_image.url} alt=""/>
-        <H3>overview</H3>
+        <H2>overview</H2>
         <IntroSection>
           <ProjectDescription>
             <P>{projectData.project_description}</P>
@@ -129,6 +137,7 @@ const data = graphql`
         edges {
           node {
             project_name
+            preview_description
             _meta {
               uid
             }

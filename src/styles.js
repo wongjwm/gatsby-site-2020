@@ -23,6 +23,7 @@ export const H1 = styled.h1`
   }
   @media only screen and ${device.mobile} {
     font-size: 32px;
+    margin-bottom: 15px;
   }
 `
 
@@ -33,10 +34,10 @@ export const H2 = styled.h2`
   font-size: 38px;
   margin-bottom: 25px;
   @media only screen and ${device.tablet} {
-    font-size: 38px;
+    font-size: 32px;
   }
   @media only screen and ${device.mobile} {
-    font-size: 38px;
+    font-size: 26px;
   }
 `
 
@@ -46,6 +47,12 @@ export const H3 = styled.h3`
   font-weight: 800;
   font-size: 28px;
   margin-bottom: 25px;
+  @media only screen and ${device.tablet} {
+    font-size: 24px;
+  }
+  @media only screen and ${device.mobile} {
+    font-size: 20px;
+  }
 `
 
 export const P = styled.p`
@@ -56,9 +63,11 @@ export const P = styled.p`
   margin-bottom: 25px;
   @media only screen and ${device.tablet} {
     font-size: 16px;
+    margin-bottom: 22px;
   }
   @media only screen and ${device.mobile} {
     font-size: 14px;
+    margin-bottom: 20px;
   }
 `
 

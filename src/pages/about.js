@@ -7,6 +7,7 @@ import SEO from "../components/seo"
 import styled from 'styled-components';
 import { RichText } from 'prismic-reactjs-custom';
 import Blob from '../images/blob-outline.svg';
+import { device } from '../device';
 import {
   YELLOW,
   H2,
@@ -21,18 +22,26 @@ const AboutWrapper = styled.div`
   width: 70%;
   margin: auto;
   display: flex;
+  @media only screen and ${device.tablet} {
+    flex-direction: column;
+  }
 `
 
 const TextWrapper = styled.div`
   margin: 100px 0px 200px 100px;
+  @media only screen and ${device.tablet} {
+    margin: 0px 0px 200px 0px;;
+  }
 `
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
+  height: 100%;
+  
 `
 const ProfileImage = styled.img`
-  width: 100%;
-  height: auto;
+  max-width: 400px;
+  height: auto%;
 `
 const BlobDecoration = styled.img`
   position: absolute;

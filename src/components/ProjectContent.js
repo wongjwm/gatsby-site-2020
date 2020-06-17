@@ -35,8 +35,6 @@ const SectionHeader = props => {
 
 const GalleryWrapper = styled.div`
   display: flex;
-  padding: 2%;
-  border: 2px solid ${BRIGHT_TEAL};
   margin-bottom: 20px;
 `
 
@@ -53,7 +51,7 @@ const DoubleImage = styled.img`
   margin-bottom: 0px;
   /* TODO: make this work for ALL first children */
   &:first-child {
-    padding-right: 2%;
+    margin-right: 2%;
   }
 `
 
@@ -62,10 +60,10 @@ const TripleImage = styled.img`
   height: 30%;
   flex: 1;
   margin-bottom: 0px;
-  padding-right: 2%;
+  margin-right: 2%;
   /* TODO: make this work for ALL first children */
   &:last-child {
-    padding-right: 0%;
+    margin-right: 0%;
   }
 `
 
