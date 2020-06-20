@@ -182,6 +182,7 @@ const data = graphql`
                 primary {
                   left_image
                   right_image
+                  caption
                 }
               }
               ... on PRISMIC_ProjectBodyTriple_image_gallery {
@@ -191,6 +192,7 @@ const data = graphql`
                   left_image
                   center_image
                   right_image
+                  caption
                 }
               }
             }

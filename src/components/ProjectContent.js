@@ -96,7 +96,7 @@ const DoubleImageGallery = props => {
         <DoubleImage src={left_image.url} />
         <DoubleImage src={right_image.url} />
       </DoubleImageGalleryWrapper>
-      <Caption>this is a caption</Caption>
+      <Caption>{caption[0].text}</Caption>
     </div>
   )
 }
@@ -111,7 +111,7 @@ const TripleImageGallery = props => {
         <TripleImage src={center_image.url} />
         <TripleImage src={right_image.url} />
       </TripleImageGalleryWrapper>
-      <Caption>this is a caption</Caption>
+      <Caption>{caption[0].text}</Caption>
     </div>
   )
 }
