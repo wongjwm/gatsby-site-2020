@@ -3,7 +3,7 @@ require('dotenv').config();
 module.exports = {
   siteMetadata: {
     title: `JW`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    description: `I use design-thinking and development in order to solve problems and build great products.`,
     author: `@gatsbyjs`,
   },
   plugins: [

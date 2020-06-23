@@ -168,7 +168,7 @@ const IndexPage = ({ data }) => {
 
   return (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="judy wong | developer & designer" />
     <Hero>
       <H1>{page.header[0].text}</H1>
       <Subheader>{page.hero_subheader}</Subheader>
