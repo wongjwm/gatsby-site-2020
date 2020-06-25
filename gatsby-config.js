@@ -2,7 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `JW`,
+    title: `judy wong`,
     description: `I use design-thinking and development in order to solve problems and build great products.`,
     author: `@gatsbyjs`,
   },

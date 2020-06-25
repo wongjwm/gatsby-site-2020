@@ -1,10 +1,8 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 import {
-  DARK_GREEN,
   H2,
   P,
   YELLOW,
@@ -30,7 +28,6 @@ const NavLinks = styled.div`
 `
 
 const Logo = styled.img`
-
 `
 
 const NavLink = styled(Link)`
@@ -38,9 +35,27 @@ const NavLink = styled(Link)`
   font-family: ${Apercu};
   color: ${YELLOW};
   text-decoration: none;
-  padding: 10px;
+  margin: 10px;
+  padding-bottom: 8px;
+  transition: all 0.6s;
+  position: relative;
+  &:before {
+    content: "";
+    width: 0;
+    height: 0.1em;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: ${YELLOW};
+    transition: all 0.3s;
+  }
   &:hover {
     color: ${BRIGHT_TEAL};
+    &:before {
+      width: 100%;
+      left: 0;
+      background: ${BRIGHT_TEAL};
+    }
   }
 `
 
@@ -49,9 +64,26 @@ const ResumeLink = styled.a`
   font-family: ${Apercu};
   color: ${YELLOW};
   text-decoration: none;
-  padding: 10px;
+  margin: 10px;
+  padding-bottom: 8px;
+  position: relative;
+  &:before {
+    content: "";
+    width: 0;
+    height: 0.1em;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: ${YELLOW};
+    transition: all 0.3s;
+  }
   &:hover {
     color: ${BRIGHT_TEAL};
+    &:before {
+      width: 100%;
+      left: 0;
+      background: ${BRIGHT_TEAL};
+    }
   }
 `
 
@@ -73,8 +105,6 @@ const HeaderWithoutData = props => {
             <ResumeLink href={contactData.resume.url}> resume </ResumeLink>
           </H2>
         </NavLinks>
-
-
       </Nav>
     </HeaderWrapper>
   )

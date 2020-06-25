@@ -80,7 +80,7 @@ const AboutPage = ({ data }) => {
   
   return (
   <Layout>
-    <SEO title="About" />
+    <SEO title="about" />
     <AboutWrapper>
       <ImageWrapper>
         <BlobDecoration alt="" src={Blob}/>
