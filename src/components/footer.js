@@ -43,7 +43,7 @@ const TechLink = styled.a`
 const FooterLink = props => {
   const { linkName, link } = props;
   return (
-    <StyledFooterLink href={link}>{linkName}</StyledFooterLink>
+    <StyledFooterLink href={link} target="_blank" rel="noopener noreferrer">{linkName}</StyledFooterLink>
   )
 }
 

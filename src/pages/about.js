@@ -9,6 +9,7 @@ import { RichText } from 'prismic-reactjs-custom';
 import Blob from '../images/blob-outline.svg';
 import { device } from '../device';
 import {
+  BRIGHT_TEAL,
   YELLOW,
   H2,
   H3,
@@ -56,14 +57,14 @@ const StyledContactLink = styled.a`
   text-decoration: none;
   padding-right: 20px;
   &:hover {
-
+    color: ${BRIGHT_TEAL}
   }
 `
 
 const ContactLink = props => {
   const { linkName, link } = props;
   return (
-    <StyledContactLink href={link}>{linkName}</StyledContactLink>
+    <StyledContactLink href={link} target="_blank" rel="noopener noreferrer">{linkName}</StyledContactLink>
   )
 }
 
@@ -104,8 +105,6 @@ const AboutPage = ({ data }) => {
         />
         <H3>{page.contact_title}</H3>
         {links}
-
-
       </TextWrapper>
     </AboutWrapper>
 

@@ -102,7 +102,7 @@ const HeaderWithoutData = props => {
             <NavLink to="/about"> about </NavLink>
           </H2>
           <H2>
-            <ResumeLink href={contactData.resume.url}> resume </ResumeLink>
+            <ResumeLink href={contactData.resume.url} target="_blank" rel="noopener noreferrer"> resume </ResumeLink>
           </H2>
         </NavLinks>
       </Nav>
