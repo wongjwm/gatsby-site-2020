@@ -124,7 +124,7 @@ const ProjectWithoutData = ({ data }) => {
           </ProjectDetails>
         </IntroSection>
         <ContentSection>{Content}</ContentSection>
-        <NextLink to='/'>next project</NextLink>
+        {/* <NextLink to='/'>next project</NextLink> */}
       </PageWrapper>
     </Layout>
   )
