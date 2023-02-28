@@ -61,8 +61,7 @@ const FooterWithoutData = props => {
   return (
     <FooterWrapper>
       <FooterText>
-      © {new Date().getFullYear()}, Built with {` `}
-            <TechLink href="https://www.gatsbyjs.org">Gatsby</TechLink>
+      © {new Date().getFullYear()}
       </FooterText>
       <FooterLinks>
       {links}
